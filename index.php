@@ -1,3 +1,5 @@
+<?php require_once("inc/config.php"); ?>
+
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
@@ -8,15 +10,22 @@
     <title>Acceuil</title>
 </head>
 <body>
-    <header id="header">
-        <nav>
-            <ul class="menu">
-                <li class="box-lien"><a href="#"></a></li>
-                <li class="box-lien"><a href="#"></a></li>
-                <li class="box-lien"><a href="#"></a></li>
-                <li class="box-lien"><a href="#"></a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header id="header">
+            <nav>
+                <ul class="menu">
+                    <li class="box-lien"><a href="<?php echo $pathLien?>index.php">acceuil</a></li>
+                    <li class="box-lien"><a href="<?php echo $pathLien?>connexion.php">connexion</a></li>
+                    <li class="box-lien"><a href="<?php echo $pathLien?>inscription.php">inscription</a></li>
+                    <li class="box-lien"><a href="<?php echo $pathLien?>livre-or.php">livre-or</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="content-page">
+            <section class="">
+                <h1>Index Page</h1>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
