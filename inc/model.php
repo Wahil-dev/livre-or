@@ -32,9 +32,14 @@
         }
 
         /* ------------------ Setters ------------------- */
-        public function db_update_profile($post) {
-            $request = $this->dbConn->prepare("UPDATE INTO utilisateur");
-        }
+        // create user methode
+        public function create_user($login, $password) {
+            $request = $this->dbConn->prepare("INSERT INTO " .$this->get_user_table_name().
+            "(login, password) VALUES(?, ?)");
+            $request->bindParam(1, $login);
+            $request->bindParam(2, $password);
+            $request->execute();
+        } 
 
 
 

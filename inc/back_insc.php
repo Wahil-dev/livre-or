@@ -55,10 +55,12 @@ use livreOr\Model;
 
         // si il n'a pas d'erreurs on crée l'utilisateur
         if(empty($loginErr) && empty($passwordErr) && empty($cPasswordErr)) {
-            $cPasswordErr = "c'est bien";
-            $_SESSION["cPasswordErr"] = $cPasswordErr;
+            // create user
+            $model->create_user($login, $password);
 
-            header("location: ".$pathLien."inscription.php");
+            // pour afficher un alert que vous êtez bien inscrit
+            $_SESSION["user_create"] = $login;
+            header("location: ".$pathLien."connexion.php");
             exit();
         } else {
             //Créer des session variable pour l'envoyer au inscription.php pour afficher les erreurs s'il exists
