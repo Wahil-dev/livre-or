@@ -1,5 +1,9 @@
 <?php
     require_once("inc/config.php");
+    if(isset($_SESSION["login"])) {
+        header("location: ".$userPathLien."index.php");
+        exit();
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +38,6 @@
     </div>
 </body>
 </html>
-<a href="inc/logout.php">logout</a>
 <!--  supprimer les variables session pour les erreurs  -->
 <?php 
     unset($_SESSION["loginErr"]);
