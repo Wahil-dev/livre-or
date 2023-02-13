@@ -19,11 +19,11 @@
             <span class="error"><?php echo isset($_SESSION["loginErr"]) ? $_SESSION["loginErr"] : ""?></span>
 
             <label for="password">password</label>
-            <input type="password" name="password" id="password" class="inp" minlength="8" maxlength="25" >
+            <input type="password" name="password" id="password" class="inp" minlength="1" maxlength="25" >
             <span class="error"><?php echo isset($_SESSION["passwordErr"]) ? $_SESSION["passwordErr"] : ""?></span>
 
             <label for="cPassword">confirm password</label>
-            <input type="password" name="cPassword" id="cPassword" class="inp" minlength="8" maxlength="25" >
+            <input type="password" name="cPassword" id="cPassword" class="inp" minlength="1" maxlength="25" >
             <span class="error"><?php echo isset($_SESSION["cPasswordErr"]) ? $_SESSION["cPasswordErr"] : ""?></span>
 
             <input type="submit" value="inscription">

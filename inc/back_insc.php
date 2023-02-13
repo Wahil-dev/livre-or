@@ -12,37 +12,62 @@ use livreOr\Model;
 
     $login = $password = $cPassword = "";
     $loginErr = $passwordErr = $cPasswordErr = "";
-
+    $errorMsg = "Confirmer que le mote de passe contient :<br> au moins 1 
+    caractère en majuscule, en minuscule, un muméro, caractère 
+    spéciaux, 8 caractère au min, 255 ou max !";
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        // vérifier que le login field est déclares et pas vide
+        // vérifier que les champs sont déclares et pas vide
+        // login
         if(isset($_POST["login"]) && !empty($_POST["login"])) {
-            $login = $_POST["login"];
+            $login = $model->test_input($_POST["login"]);
+            //vérifier que le login n'est pas utliliser déja
+            if($model->user_not_exist_by_login($login)) {
+            } else {
+                $loginErr = "Login déja utiliser !";
+            }
         } else {
             $loginErr = "Login required !";
         }
-
-        // vérifier que le password field est déclares et pas vide
+        // password
         if(isset($_POST["password"]) && !empty($_POST["password"])) {
-            $login = $_POST["password"];
+            global $password;
+            $password = $model->test_input($_POST["password"]);
+            //password validation
+            if(!$model->validate_password($password)) {
+                $passwordErr = $errorMsg;
+            }
         } else {
             $passwordErr = "password required !";
         }
 
-        // vérifier que le cPassword field est déclares et pas vide
+        // confirm password
         if(isset($_POST["cPassword"]) && !empty($_POST["cPassword"])) {
-            $login = $_POST["cPassword"];
+            $cPassword = $model->test_input($_POST["cPassword"]);
+            //vérifier que le confirm password === password
+            if(!($cPassword === $password)) {
+                $cPasswordErr = "confirm password not equal password !";
+            }
+
         } else {
-            $cPasswordErr = "cPassword required !";
+            $cPasswordErr = "confirm password required !";
         }
 
-        //Créer des session variable pour l'envoyer au inscription.php pour afficher les erreurs s'il exists
-        $_SESSION["loginErr"] = $loginErr;
-        $_SESSION["passwordErr"] = $passwordErr;
-        $_SESSION["cPasswordErr"] = $cPasswordErr;
-        header("location: ".$pathLien."inscription.php");
-        exit();
-    }
+        // si il n'a pas d'erreurs on crée l'utilisateur
+        if(empty($loginErr) && empty($passwordErr) && empty($cPasswordErr)) {
+            $cPasswordErr = "c'est bien";
+            $_SESSION["cPasswordErr"] = $cPasswordErr;
 
+            header("location: ".$pathLien."inscription.php");
+            exit();
+        } else {
+            //Créer des session variable pour l'envoyer au inscription.php pour afficher les erreurs s'il exists
+            $_SESSION["loginErr"] = $loginErr;
+            $_SESSION["passwordErr"] = $passwordErr;
+            $_SESSION["cPasswordErr"] = $cPasswordErr;
+            header("location: ".$pathLien."inscription.php");
+            exit();
+        }
+    }
 ?>
 

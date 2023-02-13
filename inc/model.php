@@ -24,15 +24,34 @@
                 echo $e->getMessage();
             }
         }
-
-        public function isExiste($id) {
-            echo "private";
+        
+        /* ------------------ Getters ------------------- */
+        public function get_user_table_name() {
+            $tbname = "utilisateurs";
+            return $tbname;
         }
-
 
         /* ------------------ Setters ------------------- */
         public function db_update_profile($post) {
             $request = $this->dbConn->prepare("UPDATE INTO utilisateur");
+        }
+
+
+
+        /* -------------- Others methods --------------- */
+
+        // validate_password
+        public function validate_password($password) {
+            $uppercase = preg_match("@[A-Z]@", $password);
+            $lowercase = preg_match("@[a-z]@", $password);
+            $number = preg_match("@[0-9]@", $password);
+            $specialChars = preg_match("@[^\w]@", $password);
+            $length = strlen($password) >= 8 && strlen($password) < 255;
+            if(!$uppercase || !$lowercase || !$number || !$specialChars || !$length) {
+                return false;
+            }
+
+            return true;
         }
 
         // supprimer les espaces / transformer les tags html en text / back slash
@@ -42,6 +61,12 @@
             $inp = htmlspecialchars($inp);
             return $inp;
         }
-
+        
+        public function user_not_exist_by_login($login) {
+            $request = $this->dbConn->prepare("SELECT login FROM ".$this->get_user_table_name()." WHERE login=?");
+            $request->bindParam(1, $login);
+            $request->execute();
+            return empty($request->fetchObject());
+        }
     }
 ?>
