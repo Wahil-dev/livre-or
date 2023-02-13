@@ -12,9 +12,6 @@ use livreOr\Model;
 
     $login = $password = $cPassword = "";
     $loginErr = $passwordErr = $cPasswordErr = "";
-    $errorMsg = "Confirmer que le mote de passe contient :<br> au moins 1 
-    caractère en majuscule, en minuscule, un muméro, caractère 
-    spéciaux, 8 caractère au min, 255 ou max !";
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         // vérifier que les champs sont déclares et pas vide
@@ -22,8 +19,7 @@ use livreOr\Model;
         if(isset($_POST["login"]) && !empty($_POST["login"])) {
             $login = $model->test_input($_POST["login"]);
             //vérifier que le login n'est pas utliliser déja
-            if($model->user_not_exist_by_login($login)) {
-            } else {
+            if($model->user_exist_by_login($login)) {
                 $loginErr = "Login déja utiliser !";
             }
         } else {
@@ -35,7 +31,9 @@ use livreOr\Model;
             $password = $model->test_input($_POST["password"]);
             //password validation
             if(!$model->validate_password($password)) {
-                $passwordErr = $errorMsg;
+                $passwordErr = "Confirmer que le mote de passe contient :<br> au moins 1 
+                caractère en majuscule, en minuscule, un muméro, caractère 
+                spéciaux, 8 caractère au min, 255 ou max !";
             }
         } else {
             $passwordErr = "password required !";

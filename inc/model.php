@@ -67,11 +67,11 @@
             return $inp;
         }
         
-        public function user_not_exist_by_login($login) {
+        public function user_exist_by_login($login) {
             $request = $this->dbConn->prepare("SELECT login FROM ".$this->get_user_table_name()." WHERE login=?");
             $request->bindParam(1, $login);
             $request->execute();
-            return empty($request->fetchObject());
+            return !empty($request->fetchObject());
         }
     }
 ?>
