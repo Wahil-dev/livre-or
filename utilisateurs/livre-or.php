@@ -28,6 +28,7 @@ use livreOr\Model;
                     <li class="box-lien"><a href="<?php echo $userPathLien?>index.php">acceuil</a></li>
                     <li class="box-lien"><a href="<?php echo $userPathLien?>livre-or.php">livre-or</a></li>
                     <li class="box-lien"><a href="<?php echo $userPathLien?>commentaire.php">commentaire</a></li>
+                    <li class="box-lien"><a href="<?php echo $userPathLien?>profile.php">profile</a></li>
                     <li class="box-lien"><a href="<?php echo $pathLien?>inc/logout.php">logout</a></li>
                 </ul>
             </nav>

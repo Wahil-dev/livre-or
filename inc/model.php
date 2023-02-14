@@ -51,6 +51,14 @@
             $request->execute();
         } 
 
+        public function update_profile($nLogin, $nPassword, $userId) {
+            $request = $this->dbConn->prepare("UPDATE ".$this->get_users_table_name()." SET login = ?, password = ? WHERE id=?");
+            $request->bindParam(1, $nLogin);
+            $request->bindParam(2, $nPassword);
+            $request->bindParam(3, $userId);
+            $request->execute();
+        }
+
 
         /* -------------- Others methods For utilisateur --------------- */
 
@@ -107,7 +115,6 @@
             .$this->get_comments_table_name().".id_utilisateur, "
             .$this->get_comments_table_name().".date, "
             .$this->get_users_table_name().".login as currentLogin".
-            
             " FROM ".$this->get_comments_table_name()." INNER JOIN ".$this->get_users_table_name()." ON ".$this->get_comments_table_name()
             .".id_utilisateur = ".$this->get_users_table_name().".id
             ORDER BY ".$this->get_comments_table_name()

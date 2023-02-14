@@ -20,15 +20,15 @@
         <a href="<?php echo $pathLien?>index.php">acceuil</a>
         <form action="<?php echo $pathLien?>inc/back_insc.php" method='post' class="form">
             <label for="login">login</label>
-            <input type="text" name="login" id="login" class="inp" minlength="3" maxlength="25" value="<?php echo isset($_POST['login']) ? ($_POST['login']) : ""?>">
+            <input type="text" name="login" id="login" class="inp" minlength="3" maxlength="25" value="<?php echo isset($_POST['login']) ? ($_POST['login']) : ""?>" required>
             <span class="error"><?php echo isset($_SESSION["loginErr"]) ? $_SESSION["loginErr"] : ""?></span>
 
             <label for="password">password</label>
-            <input type="password" name="password" id="password" class="inp" minlength="1" maxlength="25" >
+            <input type="password" name="password" id="password" class="inp" minlength="1" maxlength="25" required>
             <span class="error"><?php echo isset($_SESSION["passwordErr"]) ? $_SESSION["passwordErr"] : ""?></span>
 
             <label for="cPassword">confirm password</label>
-            <input type="password" name="cPassword" id="cPassword" class="inp" minlength="1" maxlength="25" >
+            <input type="password" name="cPassword" id="cPassword" class="inp" minlength="1" maxlength="25" required>
             <span class="error"><?php echo isset($_SESSION["cPasswordErr"]) ? $_SESSION["cPasswordErr"] : ""?></span>
 
             <input type="submit" value="inscription">
