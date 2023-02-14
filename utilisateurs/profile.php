@@ -46,6 +46,11 @@
                     <!-- error message -->
                     <span class="error"><?php echo isset($_SESSION["nPasswordErr"]) ? $_SESSION["nPasswordErr"] : ""?></span>
 
+                    <label for="confirmNvPassword">confirmation nouveau password</label>
+                    <input type="password" name="confirmNvPassword" id="confirmNvPassword" class="inp" minlength="8" maxlength="25" value="<?php echo $_SESSION["login"]->password?>" required>
+                    <!-- error message -->
+                    <span class="error"><?php echo isset($_SESSION["confirmNvPasswordErr"]) ? $_SESSION["confirmNvPasswordErr"] : ""?></span>
+
                     <input type="submit" value="save change">
                 </form>
             </section>
@@ -55,12 +60,10 @@
 </html>
 <!--  supprimer les variables session pour les erreurs  -->
 <?php 
-    if(isset($_SESSION["identifierErr"])) {
-        unset($_SESSION["identifierErr"]);
-    }
 
-    if(isset($_SESSION["nLoginErr"], $_SESSION["nPasswordErr"])) {
+    if(isset($_SESSION["nLoginErr"], $_SESSION["nPasswordErr"], $_SESSION["confirmNvPasswordErr"])) {
         unset($_SESSION["nLoginErr"]);
         unset($_SESSION["nPasswordErr"]);
+        unset($_SESSION["confirmNvPasswordErr"]);
     }
 ?>
