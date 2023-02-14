@@ -25,7 +25,8 @@
             }
         }
         
-        /* ------------------ Getters ------------------- */
+        /* ------------------ Getters For utilisateurs ------------------- */
+
         public function get_users_table_name() {
             $tbname = "utilisateurs";
             return $tbname;
@@ -38,8 +39,9 @@
             $request->execute();
             return $request->fetchObject();
         }
+        
 
-        /* ------------------ Setters ------------------- */
+        /* ------------------ Setters For utilisateurs ------------------- */
         // create user methode
         public function create_user($login, $password) {
             $request = $this->dbConn->prepare("INSERT INTO " .$this->get_users_table_name().
@@ -50,8 +52,7 @@
         } 
 
 
-
-        /* -------------- Others methods --------------- */
+        /* -------------- Others methods For utilisateur --------------- */
 
         // validate_password
         public function is_valid($password) {
@@ -89,5 +90,35 @@
             $request->execute();
             return !empty($request->fetch());
         }
+
+
+
+
+
+        /* -------------- Getters For commentaires --------------- */
+        public function get_comments_table_name() {
+            $tbname = "commentaires";
+            return $tbname;
+        }
+
+        public function get_all_comments() {
+            $request = $this->dbConn->prepare("SELECT * FROM ".$this->get_comments_table_name());
+            $request->execute();
+            
+            return $request->fetchAll(PDO::FETCH_OBJ);
+        }
+
+
+
+        /* --------------- Setters For commentaires -------------- */
+        public function set_comment($text, $userId) {
+            $request = $this->dbConn->prepare("INSERT INTO ".$this->get_comments_table_name()."(commentaire, id_utilisateur ) VALUES(?, ?)");
+            $request->bindParam(1, $text);
+            $request->bindParam(2, $userId);
+            $request->execute();
+        }
+
+
+        /* --------- Others methods For commentaires ----------- */
     }
 ?>
