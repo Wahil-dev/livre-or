@@ -17,6 +17,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="<?php echo $pathLien?>index.php">acceuil</a>
         <form action="<?php echo $pathLien?>inc/back_insc.php" method='post' class="form">
             <label for="login">login</label>
             <input type="text" name="login" id="login" class="inp" minlength="3" maxlength="25" value="<?php echo isset($_POST['login']) ? ($_POST['login']) : ""?>">

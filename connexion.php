@@ -17,6 +17,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="<?php echo $pathLien?>index.php">acceuil</a>
         <!-- error message -->
         <span class="error"><?php echo isset($_SESSION["identifierErr"]) ? $_SESSION["identifierErr"] : ""?></span>
 

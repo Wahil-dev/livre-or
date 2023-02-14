@@ -27,9 +27,8 @@ use livreOr\Model;
         }
         // password
         if(isset($_POST["password"]) && !empty($_POST["password"])) {
-            global $password;
             $password = $model->test_input($_POST["password"]);
-            //vérifier si le mote de passe n'est pas valide
+            ////vérifier si le mote de passe n'est pas valide
             if(!$model->is_valid($password)) {
                 $passwordErr = "Confirmer que le mote de passe contient :<br> au moins 1 
                 caractère en majuscule, en minuscule, un muméro, caractère 
