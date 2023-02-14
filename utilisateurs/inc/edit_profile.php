@@ -9,8 +9,8 @@ use livreOr\Model;
         exit();
     } 
 
-    $nLogin = $nPassword = $confirmNvPassword = "";
-    $nLoginErr = $nPasswordErr = $confirmNvPasswordErr = "";
+    $nLogin = $oldPassword = $nPassword = $confirmNvPassword = "";
+    $nLoginErr = $oldPasswordErr = $nPasswordErr = $confirmNvPasswordErr = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         //login
@@ -20,7 +20,18 @@ use livreOr\Model;
             $nLoginErr = "login required !";
         }
         
-        //Password
+        //Old password
+        if(isset($_POST["oldPassword"]) && !empty($_POST["oldPassword"])) {
+            $oldPassword = $model->test_input($_POST["oldPassword"]);
+            //Vérifier que le mote de pass entrer dans ce champ est le mème que le mote de pass qu'il est dans le variable globale session[login]
+            if(!($oldPassword === $_SESSION["login"]->password)) {
+                $oldPasswordErr = "enter old password !";
+            }
+        } else {
+            $nPasswordErr = "old password required !";
+        }
+
+        //Nouveau Password
         if(isset($_POST["nPassword"]) && !empty($_POST["nPassword"])) {
             $nPassword = $model->test_input($_POST["nPassword"]);
             //Validation password
@@ -33,7 +44,7 @@ use livreOr\Model;
             $nPasswordErr = "password required !";
         }
 
-        //Confirm password
+        //Confirm nouveau password
         if(isset($_POST["confirmNvPassword"]) && !empty($_POST["confirmNvPassword"])) {
             $confirmNvPassword = $model->test_input($_POST["confirmNvPassword"]);
             //vérifier que le confirm password === password
@@ -45,7 +56,7 @@ use livreOr\Model;
             $cPasswordErr = "confirm nouveau password required !";
         }
 
-        if(empty($nLoginErr) && empty($nPasswordErr) && empty($confirmNvPasswordErr)) {
+        if(empty($nLoginErr) && empty($nPasswordErr) && empty($confirmNvPasswordErr) && empty($oldPasswordErr)) {
             //Vérifier si l'utilisateur encore connecter
             if(isset($_SESSION["login"])) {
                 $userId = $_SESSION["login"]->id;
@@ -61,6 +72,7 @@ use livreOr\Model;
             }
         } else {
             $_SESSION["nLoginErr"] = $nLoginErr;
+            $_SESSION["oldPasswordErr"] = $oldPasswordErr;
             $_SESSION["nPasswordErr"] = $nPasswordErr;
             $_SESSION["confirmNvPasswordErr"] = $confirmNvPasswordErr;
             header("location: ".$userPathLien."profile.php");

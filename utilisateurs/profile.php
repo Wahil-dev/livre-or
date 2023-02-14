@@ -37,17 +37,22 @@
 
                 <form action="<?php echo $userPathLien?>inc/edit_profile.php" method='post' class="form">
                     <label for="nLogin">nouveau login</label>
-                    <input type="text" name="nLogin" id="nLogin" class="inp" minlength="3" maxlength="25" value="<?php echo $_SESSION["login"]->login?>"  required>
+                    <input type="text" name="nLogin" id="nLogin" class="inp" minlength="3" maxlength="25" required>
                     <!-- error message -->
                     <span class="error"><?php echo isset($_SESSION["nLoginErr"]) ? $_SESSION["nLoginErr"] : ""?></span>
 
+                    <label for="oldPassword">ancien password</label>
+                    <input type="password" name="oldPassword" id="oldPassword" class="inp" minlength="8" maxlength="25" required>
+                    <!-- error message -->
+                    <span class="error"><?php echo isset($_SESSION["oldPasswordErr"]) ? $_SESSION["oldPasswordErr"] : ""?></span>
+
                     <label for="nPassword">nouveau password</label>
-                    <input type="password" name="nPassword" id="nPassword" class="inp" minlength="8" maxlength="25" value="<?php echo $_SESSION["login"]->password?>" required>
+                    <input type="password" name="nPassword" id="nPassword" class="inp" minlength="8" maxlength="25" required>
                     <!-- error message -->
                     <span class="error"><?php echo isset($_SESSION["nPasswordErr"]) ? $_SESSION["nPasswordErr"] : ""?></span>
 
                     <label for="confirmNvPassword">confirmation nouveau password</label>
-                    <input type="password" name="confirmNvPassword" id="confirmNvPassword" class="inp" minlength="8" maxlength="25" value="<?php echo $_SESSION["login"]->password?>" required>
+                    <input type="password" name="confirmNvPassword" id="confirmNvPassword" class="inp" minlength="8" maxlength="25" required>
                     <!-- error message -->
                     <span class="error"><?php echo isset($_SESSION["confirmNvPasswordErr"]) ? $_SESSION["confirmNvPasswordErr"] : ""?></span>
 
@@ -61,9 +66,10 @@
 <!--  supprimer les variables session pour les erreurs  -->
 <?php 
 
-    if(isset($_SESSION["nLoginErr"], $_SESSION["nPasswordErr"], $_SESSION["confirmNvPasswordErr"])) {
+    if(isset($_SESSION["nLoginErr"], $_SESSION["nPasswordErr"], $_SESSION["confirmNvPasswordErr"], $_SESSION["oldPasswordErr"])) {
         unset($_SESSION["nLoginErr"]);
         unset($_SESSION["nPasswordErr"]);
         unset($_SESSION["confirmNvPasswordErr"]);
+        unset($_SESSION["oldPasswordErr"]);
     }
 ?>
