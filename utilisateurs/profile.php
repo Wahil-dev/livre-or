@@ -28,7 +28,6 @@
                 </ul>
             </nav>
         </header>
-        
         <main class="content-page">
             <section class="">
                 <h1>update profile page</h1>
