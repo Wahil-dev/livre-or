@@ -1,4 +1,9 @@
 <?php
+use livreOr\Model;
+    require_once("../inc/config.php"); 
+    require_once($pathInclude."inc/model.php");
+    $model = new Model();
+
     require_once("../inc/config.php"); 
     if(!isset($_SESSION["login"])) {
         header("location: ".$pathLien."index.php");
@@ -33,15 +38,19 @@
                 <table border="2">
                     <thead>
                         <tr>
-                            <th>posté par</th>
+                            <th>posté le</th>
                             <th>par utilisateur</th>
                             <th>commentaires</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
+                        <?php foreach($model->get_all_comments() as $comment) :?>
+                            <tr>
+                                <td><?= $comment->date?></td>
+                                <td><?= $comment->currentLogin?></td>
+                                <td><?= $comment->commentaire?></td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </section>

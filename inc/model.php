@@ -102,7 +102,16 @@
         }
 
         public function get_all_comments() {
-            $request = $this->dbConn->prepare("SELECT * FROM ".$this->get_comments_table_name());
+            $request = $this->dbConn->prepare("SELECT "
+            .$this->get_comments_table_name().".commentaire, "
+            .$this->get_comments_table_name().".id_utilisateur, "
+            .$this->get_comments_table_name().".date, "
+            .$this->get_users_table_name().".login as currentLogin".
+            
+            " FROM ".$this->get_comments_table_name()." INNER JOIN ".$this->get_users_table_name()." ON ".$this->get_comments_table_name()
+            .".id_utilisateur = ".$this->get_users_table_name().".id
+            ORDER BY ".$this->get_comments_table_name()
+            .".date DESC");
             $request->execute();
             
             return $request->fetchAll(PDO::FETCH_OBJ);

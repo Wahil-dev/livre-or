@@ -37,7 +37,7 @@ use livreOr\Model;
                 <h1>commentaire page</h1>
                 <form action="<?php echo $userPathLien?>inc/back_comments.php" method="post">
                     <label for="comment">commentaire</label>
-                    <input type="text" name="comment" id="comment">
+                    <textarea name="comment" id="comment"></textarea>
                     <!-- error message -->
                     <span class="error"><?php echo isset($_SESSION["commentErr"]) ? $_SESSION["commentErr"] : ""?></span>
 
@@ -48,3 +48,5 @@ use livreOr\Model;
     </div>
 </body>
 </html>
+<?php
+    unset($_SESSION["commentErr"]);
