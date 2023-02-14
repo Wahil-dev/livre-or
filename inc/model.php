@@ -26,15 +26,23 @@
         }
         
         /* ------------------ Getters ------------------- */
-        public function get_user_table_name() {
+        public function get_users_table_name() {
             $tbname = "utilisateurs";
             return $tbname;
+        }
+
+        public function get_user($login, $password) {
+            $request = $this->dbConn->prepare("SELECT * FROM ".$this->get_users_table_name()." WHERE login=? && password=?");
+            $request->bindParam(1, $login);
+            $request->bindParam(2, $password);
+            $request->execute();
+            return $request->fetchObject();
         }
 
         /* ------------------ Setters ------------------- */
         // create user methode
         public function create_user($login, $password) {
-            $request = $this->dbConn->prepare("INSERT INTO " .$this->get_user_table_name().
+            $request = $this->dbConn->prepare("INSERT INTO " .$this->get_users_table_name().
             "(login, password) VALUES(?, ?)");
             $request->bindParam(1, $login);
             $request->bindParam(2, $password);
@@ -46,7 +54,7 @@
         /* -------------- Others methods --------------- */
 
         // validate_password
-        public function validate_password($password) {
+        public function is_valid($password) {
             $uppercase = preg_match("@[A-Z]@", $password);
             $lowercase = preg_match("@[a-z]@", $password);
             $number = preg_match("@[0-9]@", $password);
@@ -68,10 +76,18 @@
         }
         
         public function user_exist_by_login($login) {
-            $request = $this->dbConn->prepare("SELECT login FROM ".$this->get_user_table_name()." WHERE login=?");
+            $request = $this->dbConn->prepare("SELECT login FROM ".$this->get_users_table_name()." WHERE login=?");
             $request->bindParam(1, $login);
             $request->execute();
             return !empty($request->fetchObject());
+        }
+
+        public function is_registered($login, $password) {
+            $request = $this->dbConn->prepare("SELECT * FROM ".$this->get_users_table_name()." WHERE login = ? && password = ?");
+            $request->bindParam(1, $login);
+            $request->bindParam(2, $password);
+            $request->execute();
+            return !empty($request->fetch());
         }
     }
 ?>

@@ -1,4 +1,5 @@
 <?php
+
     if(!session_id()) session_start();
     
     $pathLien = "/laplateforme/livre-or/";
