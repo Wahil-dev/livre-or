@@ -16,9 +16,17 @@ use livreOr\Model;
         //login
         if(isset($_POST["nLogin"]) && !empty($_POST["nLogin"])) {
             $nLogin = $model->test_input($_POST["nLogin"]);
+
+            //Confirmer que le nouveau login n'est pas utiliser
+            if($model->is_exist($nLogin, $userId) == 1) {
+                $nLoginErr = "nouveau login déja utiliser !";
+            }
         } else {
             $nLoginErr = "login required !";
         }
+
+        //User id
+        $userId = $_SESSION["login"]->id;
         
         //Old password
         if(isset($_POST["oldPassword"]) && !empty($_POST["oldPassword"])) {
@@ -59,7 +67,6 @@ use livreOr\Model;
         if(empty($nLoginErr) && empty($nPasswordErr) && empty($confirmNvPasswordErr) && empty($oldPasswordErr)) {
             //Vérifier si l'utilisateur encore connecter
             if(isset($_SESSION["login"])) {
-                $userId = $_SESSION["login"]->id;
                 $model->update_profile($nLogin, $nPassword, $userId);
 
                 //Update login session

@@ -99,7 +99,13 @@
             return !empty($request->fetch());
         }
 
-
+        public function is_exist($nouveauLogin, $userId) {
+            $request = $this->dbConn->prepare("SELECT id, login FROM ".$this->get_users_table_name()." WHERE login = ? ");
+            $request->bindParam(1, $nouveauLogin);
+            // $request->bindParam(2, $userId);
+            $request->execute();
+            return !empty($request->fetchObject());
+        }
 
 
 
