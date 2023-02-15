@@ -4,10 +4,8 @@ use livreOr\Model;
     require_once($pathInclude."inc/model.php");
     $model = new Model();
 
-    if(!isset($_SESSION["login"])) {
-        header("location: ".$pathLien."index.php");
-        exit();
-    } 
+    //S'il est connecter
+    check_logged_in();
 ?>
 
 <!DOCTYPE html>

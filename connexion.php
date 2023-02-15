@@ -1,9 +1,8 @@
 <?php
     require_once("inc/config.php");
-    if(isset($_SESSION["login"])) {
-        header("location: ".$pathLien."index.php");
-        exit();
-    } 
+    
+    //S'il est connecter
+    check_not_logged_in();
 ?>
 
 <!DOCTYPE html>
