@@ -5,7 +5,7 @@ use livreOr\Model;
     $model = new Model();
 
     if(isset($_SESSION["login"])) {
-        header("location: ".$userPathLien."livre-or.php");
+        header("location: ".$pathLien."livre-or.php");
         exit();
     } 
 ?>
@@ -21,19 +21,10 @@ use livreOr\Model;
 </head>
 <body>
     <div class="container">
-        <header id="header">
-            <nav>
-                <ul class="menu">
-                    <li class="box-lien"><a href="<?php echo $pathLien?>index.php">acceuil</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>connexion.php">connexion</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>inscription.php">inscription</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>livre-or.php">livre-or</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php require_once($pathInclude."inc/header.php") ?>
         <main class="content-page">
             <section class="content">
-                <h1>commentaire page</h1>
+                <h1>réservations page</h1>
                 <table border="2">
                     <thead>
                         <tr>

@@ -1,6 +1,6 @@
 <?php
 use livreOr\Model;
-    require_once("../inc/config.php"); 
+    require_once("./inc/config.php"); 
     require_once($pathInclude."inc/model.php");
     $model = new Model();
 
@@ -22,21 +22,12 @@ use livreOr\Model;
 </head>
 <body>
     <div class="container">
-        <header id="header">
-            <nav>
-                <ul class="menu">
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>index.php">acceuil</a></li>
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>livre-or.php">livre-or</a></li>
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>commentaire.php">commentaire</a></li>
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>profile.php">profile</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>inc/logout.php">logout</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php require_once($pathInclude."inc/header.php") ?>
+
         <main class="content-page">
             <section class="content">
                 <h1>commentaire page</h1>
-                <form action="<?php echo $userPathLien?>inc/back_comments.php" method="post">
+                <form action="<?php echo $pathLien?>inc/back_comments.php" method="post">
                     <label for="comment">commentaire</label>
                     <textarea name="comment" id="comment"></textarea>
                     <!-- error message -->

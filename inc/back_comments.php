@@ -24,12 +24,12 @@ use livreOr\Model;
             $model->set_comment($comment, $_SESSION["login"]->id);
     
             //Redirect to commentaire page
-            header("location: ".$userPathLien."livre-or.php");
+            header("location: ".$pathLien."livre-or.php");
             exit();
         } else {
             $_SESSION["commentErr"] = $commentErr;
             //Redirect to commentaire page
-            header("location: ".$userPathLien."commentaire.php");
+            header("location: ".$pathLien."commentaire.php");
             exit();
         }
     }

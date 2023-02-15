@@ -6,7 +6,7 @@ use livreOr\Model;
     $model = new Model();
     
     if(isset($_SESSION["login"])) {
-        header("location: ".$userPathLien."index.php");
+        header("location: ".$pathLien."index.php");
         exit();
     } 
 
@@ -39,7 +39,7 @@ use livreOr\Model;
             //Vérifier si l'utilisateur est déja inscrit ou non
             if($model->is_registered($login, $password)) {
                 $_SESSION["login"] = $model->get_user($login, $password);
-                header("location: ".$userPathLien."index.php");
+                header("location: ".$pathLien."index.php");
                 exit();
             } else {
                 $identifierErr = "votre identifiant n'est pas valide !";

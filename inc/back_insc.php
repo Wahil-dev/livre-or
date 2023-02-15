@@ -6,7 +6,7 @@ use livreOr\Model;
     $model = new Model();
 
     if(isset($_SESSION["login"])) {
-        header("location: ".$userPathLien."index.php");
+        header("location: ".$pathLien."index.php");
         exit();
     } 
 

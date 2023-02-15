@@ -1,7 +1,7 @@
 <?php
     require_once("inc/config.php");
     if(isset($_SESSION["login"])) {
-        header("location: ".$userPathLien."index.php");
+        header("location: ".$pathLien."index.php");
         exit();
     } 
 ?>

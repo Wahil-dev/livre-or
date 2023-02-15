@@ -1,5 +1,5 @@
 <?php
-    require_once("../inc/config.php"); 
+    require_once("./inc/config.php"); 
     if(!isset($_SESSION["login"])) {
         header("location: ".$pathLien."index.php");
         exit();
@@ -17,24 +17,15 @@
 </head>
 <body>
     <div class="container">
-        <header id="header">
-            <nav>
-                <ul class="menu">
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>index.php">acceuil</a></li>
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>livre-or.php">livre-or</a></li>
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>commentaire.php">commentaire</a></li>
-                    <li class="box-lien"><a href="<?php echo $userPathLien?>profile.php">profile</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>inc/logout.php">logout</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php require_once($pathInclude."inc/header.php") ?>
+
         <main class="content-page">
             <section class="">
                 <h1>update profile page</h1>
                 <!-- error message -->
                 <span class="error"><?php echo isset($_SESSION["identifierErr"]) ? $_SESSION["identifierErr"] : ""?></span>
 
-                <form action="<?php echo $userPathLien?>inc/edit_profile.php" method='post' class="form">
+                <form action="<?php echo $pathLien?>inc/edit_profile.php" method='post' class="form">
                     <label for="nLogin">nouveau login</label>
                     <input type="text" name="nLogin" id="nLogin" class="inp" minlength="3" maxlength="25" required>
                     <!-- error message -->

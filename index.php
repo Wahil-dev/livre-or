@@ -1,9 +1,5 @@
 <?php
     require_once("inc/config.php"); 
-    if(isset($_SESSION["login"])) {
-        header("location: ".$userPathLien."index.php");
-        exit();
-    } 
 ?>
 
 <!DOCTYPE html>
@@ -17,16 +13,8 @@
 </head>
 <body>
     <div class="container">
-        <header id="header">
-            <nav>
-                <ul class="menu">
-                    <li class="box-lien"><a href="<?php echo $pathLien?>index.php">acceuil</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>connexion.php">connexion</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>inscription.php">inscription</a></li>
-                    <li class="box-lien"><a href="<?php echo $pathLien?>livre-or.php">livre-or</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php require_once($pathInclude."inc/header.php") ?>
+
         <main class="content-page">
             <section class="">
                 <h1>Index Page</h1>
