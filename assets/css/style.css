@@ -3,6 +3,7 @@
     margin: 0;
     scroll-behavior: smooth;
     font-family: "serif";
+    box-sizing: border-box;
 }
 
 li { list-style: none }
@@ -26,6 +27,18 @@ a { text-decoration: none }
     justify-content: space-evenly;
 }
 
+.btn-custom {
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+}
+
+.btn-custom:hover {
+    background-color: brown;
+}
+
 
 /* ------------------ Start header style ------------------ */
 #header {
@@ -47,8 +60,54 @@ a { text-decoration: none }
 
 #header .navigation .menu .box-lien a {
     color: white;
+    text-transform: capitalize;
 }
 
 #header .navigation .menu .box-lien a:hover {
     color: rgb(210, 159, 159);
+}
+/* ------------------ End header style ------------------ */
+
+
+
+.container .content-page {
+    padding: 50px 0;
+    width: 100%;
+    height: ;
+    margin: auto;
+}
+
+
+/* ------------------ Start Form style ------------------ */
+
+.container .content-page .form {
+    background-color: #eee;
+    margin: auto;
+    padding: 20px 10px;
+    width: 400px;
+    gap: 5px;
+}
+
+.container .content-page .form label {
+    text-transform: capitalize;
+}
+
+.container .content-page .form .inp {
+    outline: none;
+    padding: clamp(1px, 4.5vw, 10px);
+    width: 100%;
+}
+
+
+
+/* ------------------ End Form style ------------------ */
+
+
+.container .content-page .box-lien {
+    text-align: center;
+    padding: 10px;
+}
+
+.container .content-page .box-lien a:hover {
+    color: rgb(200, 16, 16);
 }

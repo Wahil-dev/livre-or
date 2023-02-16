@@ -1,0 +1,14 @@
+@media screen and (max-width: 576px) {
+    
+    /* -------------- Start Form style -------------- */
+    .container .content-page .form {
+        background-color: #eee;
+        margin: auto;
+        padding: 20px 10px;
+        width: 100%;
+        gap: 5px;
+    }
+
+    /* ------------ End Form style ------------- */
+
+}

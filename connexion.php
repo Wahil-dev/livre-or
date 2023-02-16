@@ -9,25 +9,27 @@
 <html lang="fr-FR">
     <?php require_once($pathInclude."inc/header.php") ?>
     
-        <!-- error message -->
-        <span class="error"><?php echo isset($_SESSION["identifierErr"]) ? $_SESSION["identifierErr"] : ""?></span>
-
-        <form action="<?php echo $pathLien?>inc/back_conn.php" method='post' class="form">
-            <label for="login">login</label>
-            <input type="text" name="login" id="login" class="inp" minlength="3" maxlength="25" required>
+        <div class="content-page">
             <!-- error message -->
-            <span class="error"><?php echo isset($_SESSION["loginErr"]) ? $_SESSION["loginErr"] : ""?></span>
-
-            <label for="password">password</label>
-            <input type="password" name="password" id="password" class="inp" minlength="8" maxlength="25" required>
-            <!-- error message -->
-            <span class="error"><?php echo isset($_SESSION["passwordErr"]) ? $_SESSION["passwordErr"] : ""?></span>
-
-            <input type="submit" value="connexion">
-        </form>
-        <p> vous n'ètez pas inscrit !  inscrit-vous 
-            <a href="<?php echo $pathLien?>inscription.php">inscription</a>
-        </p>
+            <span class="error"><?php echo isset($_SESSION["identifierErr"]) ? $_SESSION["identifierErr"] : ""?></span>
+    
+            <form action="<?php echo $pathLien?>inc/back_conn.php" method='post' class="form flex-c">
+                <label for="login">login</label>
+                <input type="text" name="login" id="login" class="inp" minlength="3" maxlength="25" required>
+                <!-- error message -->
+                <span class="error"><?php echo isset($_SESSION["loginErr"]) ? $_SESSION["loginErr"] : ""?></span>
+    
+                <label for="password">password</label>
+                <input type="password" name="password" id="password" class="inp" minlength="8" maxlength="25" required>
+                <!-- error message -->
+                <span class="error"><?php echo isset($_SESSION["passwordErr"]) ? $_SESSION["passwordErr"] : ""?></span>
+    
+                <input type="submit" value="connexion" class="btn-custom">
+            </form>
+            <p class="box-lien"> vous n'ètez pas inscrit !  inscrit-vous 
+                <a href="<?php echo $pathLien?>inscription.php">inscription</a>
+            </p>
+        </div>
     </div>
 </body>
 </html>
