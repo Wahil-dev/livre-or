@@ -11,3 +11,44 @@ a { text-decoration: none }
 .error {
     color: red !important;
 }
+
+.flex-r {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+
+/* ------------------ Start header style ------------------ */
+#header {
+    background-color: rgb(0, 0, 0);
+    height: 70px;
+}
+
+#header .navigation  {
+    height: 100%;
+}
+
+#header .navigation .menu {
+    height: 100%;
+}
+
+#header .navigation .menu .box-lien {
+    
+}
+
+#header .navigation .menu .box-lien a {
+    color: white;
+}
+
+#header .navigation .menu .box-lien a:hover {
+    color: rgb(210, 159, 159);
+}
