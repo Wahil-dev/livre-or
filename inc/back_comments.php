@@ -1,6 +1,6 @@
 <?php
 use livreOr\Model;
-    require_once("../../inc/config.php"); 
+    require_once("config.php"); 
     require_once($pathInclude."inc/model.php");
     $model = new Model();
 

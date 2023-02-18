@@ -15,7 +15,7 @@
                 <!-- error message -->
                 <span class="error"><?php echo isset($_SESSION["identifierErr"]) ? $_SESSION["identifierErr"] : ""?></span>
 
-                <form action="<?php echo $pathLien?>inc/edit_profile.php" method='post' class="form">
+                <form action="<?php echo $pathLien?>inc/edit_profile.php" method='post' class="form flex-c">
                     <label for="nLogin">nouveau login</label>
                     <input type="text" name="nLogin" id="nLogin" class="inp" minlength="3" maxlength="25" required>
                     <!-- error message -->
@@ -36,7 +36,7 @@
                     <!-- error message -->
                     <span class="error"><?php echo isset($_SESSION["confirmNvPasswordErr"]) ? $_SESSION["confirmNvPasswordErr"] : ""?></span>
 
-                    <input type="submit" value="save change">
+                    <input type="submit" value="save change" class="btn-custom">
                 </form>
             </section>
         </main>
