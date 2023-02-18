@@ -23,7 +23,7 @@ a { text-decoration: none }
 .flex-c {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-evenly;
 }
 
@@ -39,6 +39,11 @@ a { text-decoration: none }
     background-color: brown;
 }
 
+.container {
+    width: 1140px;
+    margin: auto;
+    padding: 10px;
+}
 
 /* ------------------ Start header style ------------------ */
 #header {
@@ -111,3 +116,28 @@ a { text-decoration: none }
 .container .content-page .box-lien a:hover {
     color: rgb(200, 16, 16);
 }
+
+
+/* ---------------- Start livre-or style ---------------- */
+.container .content-page .content {
+    gap: 30px;
+    border-spacing: 0;
+}
+
+.container .content-page .content .table {
+    border-spacing: 0;
+    width: 100%;
+}
+
+.container .content-page .content .table :is(th, td) {
+    padding: 10px;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
+.container .content-page .content .table th {
+    background-color: blanchedalmond;
+}
+
+
+/* ---------------- End livre-or style ---------------- */

@@ -7,7 +7,7 @@
         <?php require_once($pathInclude."inc/header.php") ?>
 
         <main class="content-page">
-            <section class="">
+            <section class="content flex-c">
                 <h1>Index Page</h1>
             </section>
         </main>

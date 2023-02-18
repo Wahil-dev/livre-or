@@ -13,15 +13,15 @@ use livreOr\Model;
         <?php require_once($pathInclude."inc/header.php") ?>
 
         <main class="content-page">
-            <section class="content">
+            <section class="content flex-c">
                 <h1>commentaire page</h1>
-                <form action="<?php echo $pathLien?>inc/back_comments.php" method="post">
+                <form action="<?php echo $pathLien?>inc/back_comments.php" method="post" class="form flex-c">
                     <label for="comment">commentaire</label>
-                    <textarea name="comment" id="comment"></textarea>
+                    <textarea name="comment" id="comment" class="inp"></textarea>
                     <!-- error message -->
                     <span class="error"><?php echo isset($_SESSION["commentErr"]) ? $_SESSION["commentErr"] : ""?></span>
 
-                    <input type="submit" value="post">
+                    <input type="submit" value="post" class="btn-custom">
                 </form>
             </section>
         </main>

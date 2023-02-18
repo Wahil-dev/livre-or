@@ -10,7 +10,7 @@
         <?php require_once($pathInclude."inc/header.php") ?>
 
         <main class="content-page">
-            <section class="">
+            <section class="content flex-c">
                 <h1>update profile page</h1>
                 <!-- error message -->
                 <span class="error"><?php echo isset($_SESSION["identifierErr"]) ? $_SESSION["identifierErr"] : ""?></span>

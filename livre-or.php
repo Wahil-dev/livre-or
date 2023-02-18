@@ -10,9 +10,9 @@ use livreOr\Model;
         <?php require_once($pathInclude."inc/header.php") ?>
         
         <main class="content-page">
-            <section class="content">
+            <section class="content flex-c">
                 <h1>réservations page</h1>
-                <table border="2">
+                <table border="2" class="table">
                     <thead>
                         <tr>
                             <th>posté le</th>
